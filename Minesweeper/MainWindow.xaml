@@ -1,0 +1,19 @@
+﻿<Window x:Class="Minesweeper.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="VeryBadMinesweeper" SizeToContent="WidthAndHeight"
+    ResizeMode="NoResize">
+
+    <DockPanel x:Name="dPanel">
+        <Menu DockPanel.Dock="Top" x:Name="Top">
+            <MenuItem Header="Game">
+                <MenuItem Header="New" Click="restartClick"/>
+                <MenuItem Header="Close" Click="closeClick"/>
+            </MenuItem>
+        </Menu>
+        <Grid x:Name="mainGrid" Margin="15">
+            
+        </Grid>
+    </DockPanel> 
+    
+</Window>

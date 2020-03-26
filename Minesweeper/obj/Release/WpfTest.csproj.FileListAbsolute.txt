@@ -1,0 +1,13 @@
+D:\VS2019_0\WpfTest\WpfTest\bin\Release\WpfTest.exe.config
+D:\VS2019_0\WpfTest\WpfTest\bin\Release\WpfTest.exe
+D:\VS2019_0\WpfTest\WpfTest\bin\Release\WpfTest.pdb
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\WpfTest.csprojAssemblyReference.cache
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\MainWindow.baml
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\MainWindow.g.cs
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\App.g.cs
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\WpfTest_MarkupCompile.cache
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\WpfTest.g.resources
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\WpfTest.Properties.Resources.resources
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\WpfTest.csproj.GenerateResource.cache
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\WpfTest.exe
+D:\VS2019_0\WpfTest\WpfTest\obj\Release\WpfTest.pdb
