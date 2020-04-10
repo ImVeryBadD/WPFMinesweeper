@@ -7,11 +7,14 @@
     <DockPanel x:Name="dPanel">
         <Menu DockPanel.Dock="Top" x:Name="Top">
             <MenuItem Header="Game">
-                <MenuItem Header="New" Click="restartClick"/>
+                <MenuItem Header="Easy" Click="restartClick"/>
+                <MenuItem Header="Medium" Click="restartClick"/>
+                <MenuItem Header="Hard" Click="restartClick"/>
+                <Separator />
                 <MenuItem Header="Close" Click="closeClick"/>
             </MenuItem>
         </Menu>
-        <Grid x:Name="mainGrid" Margin="15">
+        <Grid x:Name="mainGrid" Margin="15" ShowGridLines="False">
             
         </Grid>
     </DockPanel> 

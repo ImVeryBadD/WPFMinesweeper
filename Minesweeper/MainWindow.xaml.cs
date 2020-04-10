@@ -16,13 +16,39 @@ namespace Minesweeper
         }
         private void buildField()
         {
-            mainGrid.RowDefinitions.Add(new RowDefinition()); // make grid of needed dimension 
+            RowDefinition row = new RowDefinition();
+            ColumnDefinition col = new ColumnDefinition();
+            row.Height = new GridLength(0, GridUnitType.Auto);
+            mainGrid.RowDefinitions.Add(row); // make grid of needed dimension
+
+            Image img = new Image();
+            img.Source = new BitmapImage(new Uri("pack://application:,,,/Icons/reset.png")); //place reset button
+            StackPanel stackPnl = new StackPanel();
+            stackPnl.Margin = new Thickness(2);
+            stackPnl.Children.Add(img);
+            Button resetButton = new Button();
+            resetButton.Content = stackPnl;
+            resetButton.Width = resetButton.Height = 23;
+            resetButton.Tag = "Null";
+            resetButton.Click += restartClick;
+            resetButton.Name = "reset";
+            Grid.SetRow(resetButton, 0);
+            Grid.SetColumn(resetButton, currGame.colls / 2);
+            mainGrid.Children.Add(resetButton);
+
             for (int i = 1; i < currGame.rows + 1; i++)
             {
-                mainGrid.RowDefinitions.Add(new RowDefinition());
+                row = new RowDefinition();
+                row.Height = new GridLength(0, GridUnitType.Auto);
+                mainGrid.RowDefinitions.Add(row);
                 for (int j = 0; j < currGame.colls; j++)
                 {
-                    mainGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                    if (i == 1)
+                    {
+                        col = new ColumnDefinition();
+                        col.Width = new GridLength(0, GridUnitType.Auto);
+                        mainGrid.ColumnDefinitions.Add(col);
+                    }
                     Button button = new Button();
                     button.Width = button.Height = 23;
                     button.Click += leftClick;
@@ -35,25 +61,25 @@ namespace Minesweeper
                     mainGrid.Children.Add(button);
                 }
             }
-
-            Image img = new Image();
-            img.Source = new BitmapImage(new Uri("pack://application:,,,/Icons/reset.png")); //place reset button
-            StackPanel stackPnl = new StackPanel();
-            stackPnl.Margin = new Thickness(2);
-            stackPnl.Children.Add(img);
-
-            Button resetButton = new Button();
-            resetButton.Content = stackPnl;
-            resetButton.Width = resetButton.Height = 23;
-            resetButton.Click += restartClick;
-            resetButton.Name = "reset";
-            Grid.SetRow(resetButton, 0);
-            Grid.SetColumn(resetButton, currGame.colls / 2);
-            mainGrid.Children.Add(resetButton);
         }
         private void restartClick(object sender, RoutedEventArgs e)
         {
-            currGame = new game();
+            string pressed = ((sender as Button) == null) ? (sender as MenuItem).Header.ToString() : (sender as Button).Name.ToString(); // read both button and menu item
+            switch (pressed)
+            {
+                case "Easy":
+                    currGame = new game(9, 9, 10);
+                    break;
+                case "Medium":
+                    currGame = new game(15, 15, 40);
+                    break;
+                case "Hard":
+                    currGame = new game(31, 16, 99);
+                    break;
+                default:
+                    currGame = new game(currGame.colls, currGame.rows, currGame.mines);
+                    break;
+            }
             mainGrid.Children.Clear();
             mainGrid.RowDefinitions.Clear();
             mainGrid.ColumnDefinitions.Clear();

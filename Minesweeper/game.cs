@@ -49,24 +49,24 @@ namespace Minesweeper
                     mat[i][j] = new cell();
             }
         }
-        void setNeighbors(int x, int y)
+        void setNeighbors(int y, int x)
         {
             for(int i=-1; i<2; i++)
                 for (int j = -1; j < 2; j++)
-                    if ((x+i>=0)&&(y+j>=0)&&(x+i<=rows)&&(y+j<=rows))
-                        mat[x+i][y+j].value = (mat[x+i][y+j].value == -1) ? -1 : mat[x+i][y+j].value + 1;
+                    if ((y+i>=0)&&(x+j>=0)&&(y+i<rows)&&(x+j<colls))
+                        mat[y+i][x+j].value = (mat[y+i][x+j].value == -1) ? -1 : (mat[y+i][x+j].value + 1);
         }
         void placeMines() 
         {
             var rand = new Random();
             for(int i=0; i<mines; i++)
             {
-                int x = rand.Next(rows-1);
-                int y = rand.Next(colls-1);
-                if (mat[x][y].value != -1)
+                int x = rand.Next(colls);
+                int y = rand.Next(rows);
+                if (mat[y][x].value != -1)
                 {
-                    mat[x][y].value = -1;
-                    setNeighbors(x,y);
+                    mat[y][x].value = -1;
+                    setNeighbors(y,x);
                 }
                 else
                     i--;
@@ -79,9 +79,9 @@ namespace Minesweeper
                 for (int x = 0; x < colls; x++)
                     for (int y = 0; y < rows; y++)
                     {
-                        mat[x][y].value = 0;
-                        mat[x][y].marked = false;
-                        mat[x][y].opened = false;
+                        mat[y][x].value = 0;
+                        mat[y][x].marked = false;
+                        mat[y][x].opened = false;
                     }
                 placeMines();
             }
